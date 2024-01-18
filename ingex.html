@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="index.js"></script>
+  </head>
+  <body>
+    <header>
+      <img src="src/free-icon-cow-6327075.png" class="img_cow" />
+      <h1 class="games_name">Быки и коровы</h1>
+      <img src="src/icon-bull.png" class="img_bull" />
+    </header>
+
+    <section id="game_section">
+      <div class="active_game">
+        <div class="start_container">
+          <select name="game_difficulty" id="game_difficulty_select">
+            <option value="20">20 попыток</option>
+            <option value="15" selected>15 попыток</option>
+            <option value="10">10 попыток</option>
+          </select>
+          <button class="start_btn">Начать игру</button>
+        </div>
+
+        <div class="game_log_container hidden">
+          <p class="attempts_left">
+            Осталось <span class="attempt_number">15</span> попыток
+          </p>
+          <p class="header_variant">Ваши варианты</p>
+
+          <ul
+            onmousedown="return false"
+            onselectstart="return false"
+            id="variants_ul"
+          ></ul>
+        </div>
+
+        <div class="send_variant_container hidden">
+          <div class="numbers_btn_container">
+            <button class="numbers_btn num_0">0</button>
+            <button class="numbers_btn num_1">1</button>
+            <button class="numbers_btn num_2">2</button>
+            <button class="numbers_btn num_3">3</button>
+            <button class="numbers_btn num_4">4</button>
+            <button class="numbers_btn num_5">5</button>
+            <button class="numbers_btn num_6">6</button>
+            <button class="numbers_btn num_7">7</button>
+            <button class="numbers_btn num_8">8</button>
+            <button class="numbers_btn num_9">9</button>
+          </div>
+          <div class="send_variant">
+            <input type="text" class="input_variant" />
+            <button class="send_variant_btn">Отправить</button>
+          </div>
+          <p class="error_message"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules_section">
+      <h2 class="rules_header">Правила игры</h2>
+      <p class="rules">
+        оалвыо аовлыдао лдыаоладвыоал оалвдыо лыаолыдв олдыо лыаоылвдао лаоыл
+        оаылваоылд аоылдв
+      </p>
+    </section>
+  </body>
+</html>
