@@ -152,6 +152,7 @@ body {
     #c9f1fd 93.75%,
     #cbf0ff 100%
   );
+  background-repeat: no-repeat;
 }
 
 header {
@@ -269,4 +270,42 @@ section {
   color: red;
   text-align: center;
   padding-top: 15px;
+}
+
+.overlay_modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.346);
+  top: 0;
+  left: 0;
+}
+
+.modal_end_game {
+  width: fit-content;
+  position: fixed;
+  padding: 40px 50px;
+  border-radius: 30px;
+  background-color: white;
+  font-size: 1.5em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal_end_game p {
+  padding: 5px 0;
+}
+.start_new_game_btn,
+.close_modal_btn {
+  padding: 10px;
+  margin-top: 15px;
+  font-size: 0.7em;
+  border-radius: 50px;
+}
+.close_modal_btn {
+  float: right;
+}
+
+.send_variant .start_new_game_btn {
+  font-size: 1.5em;
 }

@@ -21,6 +21,15 @@
     </header>
 
     <section id="game_section">
+      <div class="overlay_modal hidden">
+        <div class="modal_end_game hidden">
+          <p class="congrats_message">Поздарвляем, Вы выиграли!</p>
+          <p class="loss_message">К сожалению, Вы проиграли.</p>
+          <p class="hidden_number_message">Было загаданно число</p>
+          <button class="start_new_game_btn modal">Сыграть еще раз</button>
+          <button class="close_modal_btn">Закрыть окно</button>
+        </div>
+      </div>
       <div class="active_game">
         <div class="start_container">
           <select name="game_difficulty" id="game_difficulty_select">
@@ -60,6 +69,7 @@
           <div class="send_variant">
             <input type="text" class="input_variant" />
             <button class="send_variant_btn">Отправить</button>
+            <button class="start_new_game_btn hidden">Сыграть еще раз</button>
           </div>
           <p class="error_message"></p>
         </div>
