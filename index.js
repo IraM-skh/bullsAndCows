@@ -1,7 +1,7 @@
 // containers
 const startContainer = document.querySelector(".start_container");
 const gameLogContainer = document.querySelector(".game_log_container");
-const sendVariantContainer = document.querySelector(".send_variant_container");
+
 const gameSection = document.querySelector("#game_section");
 const overlayModal = document.querySelector(".overlay_modal");
 const modalEndGame = document.querySelector(".modal_end_game");
@@ -15,7 +15,7 @@ const attemptNumber = document.querySelector(".attempt_number");
 variantLog = Array.from(document.querySelectorAll(".variant_log"));
 variantsUl = document.querySelector("#variants_ul");
 
-//sendVariantContainer
+//sendVariant
 const inputVariant = document.querySelector(".input_variant");
 const allowedTypeNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 const numbersBtn = Array.from(document.querySelectorAll(".numbers_btn"));
@@ -30,10 +30,21 @@ const startNewGameBtn = Array.from(
   document.querySelectorAll(".start_new_game_btn")
 );
 const closeModalBtn = document.querySelector(".close_modal_btn");
+let numberOfVariant = 0;
+let currentHiddenDigit = [];
+const hiddenNumber = [...new Array(4)].map(() => {
+  let i = 0;
+  while (i < 1) {
+    let generateDigit = Math.floor(Math.random() * 10);
+    if (!currentHiddenDigit.includes(generateDigit)) {
+      currentHiddenDigit.push(generateDigit);
+      i += 1;
+      return generateDigit;
+    }
+  }
+});
 
-const hiddenNumber = [...new Array(4)].map(() =>
-  Math.floor(Math.random() * 10)
-);
+console.log(hiddenNumber);
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !inputVariant.classList.contains("hidden")) {
@@ -80,7 +91,6 @@ gameSection.addEventListener("click", (e) => {
     lossMessage.classList.remove("hidden");
     startContainer.classList.toggle("hidden");
     gameLogContainer.classList.toggle("hidden");
-    sendVariantContainer.classList.toggle("hidden");
   }
 });
 
@@ -88,7 +98,6 @@ function startGame() {
   //show containers
   startContainer.classList.toggle("hidden");
   gameLogContainer.classList.toggle("hidden");
-  sendVariantContainer.classList.toggle("hidden");
   //change numer of selected attempts
   attemptNumber.textContent = gameDifficultySelect.value;
 }
@@ -117,29 +126,35 @@ function changeBottomBorderVariant(variantEl) {
 
 function sendUserVariant(inputValue) {
   if (attemptNumber.textContent == 0) {
+    errorMessage.classList.remove("hidden");
     errorMessage.textContent =
       "Вы исчерпали все попытки. Можете начать игру заново.";
     return;
   }
   errorMessage.textContent = "";
+  errorMessage.classList.add("hidden");
   if (inputValue.length != 4) {
+    errorMessage.classList.remove("hidden");
     errorMessage.textContent = "Введите число из 4 цифр.";
   }
   if (!inputValue.match(/^\d+$/)) {
+    errorMessage.classList.remove("hidden");
     errorMessage.textContent += " Допускается вводить только цифры от 0 до 9.";
   }
 
   if (inputValue.length == 4 && inputValue.match(/^\d+$/)) {
     const bull = hiddenNumber.filter((el, ind) => inputValue[ind] == el).length;
     const cow =
-      hiddenNumber.filter((el) => inputValue.includes(el)).length - bull;
-
+      inputValue.split("").filter((el) => hiddenNumber.includes(Number(el)))
+        .length - bull;
+    numberOfVariant += 1;
     variantsUl.insertAdjacentHTML(
       "beforeend",
-      `<li id="variant"><span class="variant_log">${inputValue[0]}</span><span class="variant_log ">${inputValue[1]}</span><span class="variant_log ">${inputValue[2]}</span><span class="variant_log ">${inputValue[3]}</span> <span>${bull}Б</span> <span>${cow}К</span></li>`
+      `<li id="variant_${numberOfVariant}"><span class="variant_log">${inputValue[0]}</span><span class="variant_log ">${inputValue[1]}</span><span class="variant_log ">${inputValue[2]}</span><span class="variant_log ">${inputValue[3]}</span> <span>${bull}Б</span> <span>${cow}К</span></li>`
     );
 
     attemptNumber.textContent -= 1;
+    scrollToLastVariant();
     if (attemptNumber.textContent == 0) {
       loseGameOnlimitAttempts();
       inputVariant.value = "";
@@ -161,7 +176,7 @@ function loseGameOnlimitAttempts() {
   showHiddenModal();
   toggleHiddenBntNewGame();
   congratsMessage.classList.add("hidden");
-  hiddenNumberMessage.textContent += hiddenNumber.join("");
+  hiddenNumberMessage.textContent += " " + hiddenNumber.join("");
 }
 
 function winGame() {
@@ -188,6 +203,13 @@ function hideModal() {
   modalEndGame.classList.add("hidden");
 }
 
+function scrollToLastVariant() {
+  variantsUl.scrollBy({
+    left: 0,
+    top: document.querySelector(`#variant_${numberOfVariant}`).offsetHeight + 1,
+    behavior: "smooth",
+  });
+}
 inputVariant.addEventListener("input", (e) => {
   if (e.inputType === "insertText" && allowedTypeNumbers.includes(e.data)) {
     if (e.target.value.length > 4) {

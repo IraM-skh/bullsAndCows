@@ -132,7 +132,10 @@ body {
   font-weight: 600;
   font-style: normal;
   font-variation-settings: "wdth" 100;
-  background-image: linear-gradient(
+  height: max-content;
+  background-color: #408d9a;
+  color: #505254;
+  /* background-image: linear-gradient(
     180deg,
     #eaecd0 0,
     #e6edd2 6.25%,
@@ -153,6 +156,7 @@ body {
     #cbf0ff 100%
   );
   background-repeat: no-repeat;
+  background-size: 100% 100%; */
 }
 
 header {
@@ -161,6 +165,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #f3f0e6;
 }
 
 .img_cow {
@@ -169,7 +174,6 @@ header {
 .img_bull {
   margin-top: -2.5%;
   width: 15%;
-  float: right;
   padding: 0 1.3%;
 }
 .games_name {
@@ -185,18 +189,31 @@ section {
 .rules_header {
   text-align: center;
   font-size: 2.5em;
+  padding: 0.5em 0;
 }
 .game_log_container,
-.send_variant_container,
 .start_container {
   max-width: 1024px;
   margin: 10px 1.5%;
   padding: 1.5em;
-  background-color: rgba(255, 255, 255, 0.561);
+  background-color: #f3f0e6;
   border-radius: 30px;
-  box-shadow: 0 0 10px rgb(0, 9, 188);
+  box-shadow: 0 0 10px #505254;
+}
+#rules_section {
+  max-width: 1024px;
+  margin: 0 auto;
+  color: #f3f0e6;
 }
 
+#rules_section h2,
+#rules_section p {
+  margin: 0 1.5%;
+  line-height: 1.3em;
+}
+#rules_section h2 {
+  color: rgb(247, 190, 139);
+}
 #game_difficulty_select,
 .start_btn {
   display: block;
@@ -210,9 +227,19 @@ section {
   margin-bottom: 15px;
 }
 
-.game_log_container,
-.numbers_btn {
+.game_log_container {
   font-size: 2em;
+}
+
+#variants_ul {
+  height: calc(1em * 10);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 1em 0;
 }
 
 .attempts_left {
@@ -221,7 +248,8 @@ section {
 
 .game_log_container ul li {
   padding-top: 15px;
-  font-size: 1.5em;
+  font-size: 1.2em;
+  max-width: fit-content;
 }
 
 .numbers_btn_container {
@@ -229,9 +257,11 @@ section {
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+  border-top: 2px solid #505254;
+  padding-top: 1em;
 }
 .send_variant {
-  margin: 1.5em auto 0 auto;
+  margin: 1em auto 0 auto;
   width: fit-content;
 }
 
@@ -240,15 +270,22 @@ section {
   padding: 5px;
   border-radius: 30px;
   flex-basis: 5.5%;
+  font-size: 1em;
+  background-color: #f9d171;
 }
 
 .input_variant,
 .send_variant_btn {
-  font-size: 1.5em;
+  font-size: 0.75em;
   padding: 10px 20px;
   border-radius: 30px;
 }
-
+button,
+input {
+  color: #505254;
+  background-color: white;
+  border: 2px solid #b7b7b7;
+}
 .input_variant {
   max-width: 120px;
 }
@@ -256,20 +293,23 @@ section {
 .hidden {
   display: none;
 }
-
+.variant_log {
+  border-bottom: 7px solid #ffffff00;
+}
 .cow {
   border-bottom: 7px solid;
-  border-image: url(/src/cow-texture.PNG) 15;
+  border-image: url(/src/cow-texture2.png) 10 1;
 }
 
 .bull {
-  border-bottom: 7px solid rgb(169, 103, 49);
+  border-bottom: 7px solid #edb732;
 }
 
 .error_message {
   color: red;
   text-align: center;
   padding-top: 15px;
+  font-size: 0.7em;
 }
 
 .overlay_modal {
@@ -298,14 +338,30 @@ section {
 .start_new_game_btn,
 .close_modal_btn {
   padding: 10px;
-  margin-top: 15px;
   font-size: 0.7em;
   border-radius: 50px;
+  color: #505254;
 }
 .close_modal_btn {
   float: right;
 }
 
-.send_variant .start_new_game_btn {
-  font-size: 1.5em;
+.rules {
+  padding-top: 0.5em;
+  font-size: 1.2em;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 15px;
+  background-color: rgb(220, 219, 219);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: rgb(220, 220, 220);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #5bc9ef;
 }

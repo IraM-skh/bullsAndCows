@@ -15,9 +15,9 @@
   </head>
   <body>
     <header>
-      <img src="src/free-icon-cow-6327075.png" class="img_cow" />
+      <img src="src/icon-bull.png" class="img_bull" alt="" />
       <h1 class="games_name">Быки и коровы</h1>
-      <img src="src/icon-bull.png" class="img_bull" />
+      <img src="src/free-icon-cow-6327075.png" class="img_cow" alt="" />
     </header>
 
     <section id="game_section">
@@ -51,9 +51,9 @@
             onselectstart="return false"
             id="variants_ul"
           ></ul>
-        </div>
+          <!-- </div>
 
-        <div class="send_variant_container hidden">
+        <div class="send_variant_container hidden"> -->
           <div class="numbers_btn_container">
             <button class="numbers_btn num_0">0</button>
             <button class="numbers_btn num_1">1</button>
@@ -71,7 +71,7 @@
             <button class="send_variant_btn">Отправить</button>
             <button class="start_new_game_btn hidden">Сыграть еще раз</button>
           </div>
-          <p class="error_message"></p>
+          <p class="error_message hidden"></p>
         </div>
       </div>
     </section>
@@ -79,8 +79,23 @@
     <section id="rules_section">
       <h2 class="rules_header">Правила игры</h2>
       <p class="rules">
-        оалвыо аовлыдао лдыаоладвыоал оалвдыо лыаолыдв олдыо лыаоылвдао лаоыл
-        оаылваоылд аоылдв
+        Отгадайте 4-х значное число за определенное количество попыток.
+        Компьютер згадывает четыре различные цифры от 0 до 9. Цифры в загаданном
+        числе не повторяются, на первом месте может стоять 0.
+      </p>
+      <p class="rules">
+        Введенный вариант будет отображен. Рядом сним будет указано количество
+        цифр, которые совпадают и по значению, и по месту расположения (быки), а
+        так же количество цифр которые сопадают по значению, но располагаются на
+        другм месте (коровы).
+      </p>
+      <p class="rules">
+        При клике левой клавишей мыши на цифру в списке Ваших вариантов, можно
+        подчеркнуть её, как корову или быка для заметки, а так же убрать
+        подчеркивание. Данные действия не влияют на результат игры.
+      </p>
+      <p class="rules">
+        При исчерпании всех попыток игра закончится проигрышем.
       </p>
     </section>
   </body>
