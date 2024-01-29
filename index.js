@@ -75,9 +75,18 @@ gameSection.addEventListener("click", (e) => {
     if (e.target.classList.contains("modal")) {
       hideModal();
     }
-    const newHiddenNumber = [...new Array(4)].map(() =>
-      Math.floor(Math.random() * 10)
-    );
+    currentHiddenDigit.splice(0, 4);
+    const newHiddenNumber = [...new Array(4)].map(() => {
+      let i = 0;
+      while (i < 1) {
+        let generateDigit = Math.floor(Math.random() * 10);
+        if (!currentHiddenDigit.includes(generateDigit)) {
+          currentHiddenDigit.push(generateDigit);
+          i += 1;
+          return generateDigit;
+        }
+      }
+    });
     hiddenNumber.splice(0, 4, ...newHiddenNumber);
     console.log(hiddenNumber);
 
