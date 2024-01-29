@@ -204,6 +204,15 @@ section {
   max-width: 1024px;
   margin: 0 auto;
   color: #f3f0e6;
+  padding-bottom: 2em;
+  border-bottom: 2px solid #f3f0e6;
+}
+
+footer {
+  max-width: 1024px;
+  margin: 0 auto;
+  color: #f3f0e6;
+  text-align: center;
 }
 
 #rules_section h2,
@@ -405,4 +414,17 @@ input {
   .input_variant {
     max-width: 5em;
   }
+}
+
+.triangle {
+  display: inline-block;
+  border: 0.4em solid transparent;
+  border-top: 0.4em solid #f3f0e6;
+  margin: 0 0.3em -0.3em 0.3em;
+}
+.icon_form {
+  padding: 1.5em 0;
+}
+.icon_form p {
+  display: inline-block;
 }

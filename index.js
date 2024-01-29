@@ -44,8 +44,6 @@ const hiddenNumber = [...new Array(4)].map(() => {
   }
 });
 
-console.log(hiddenNumber);
-
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !inputVariant.classList.contains("hidden")) {
     sendUserVariant(inputVariant.value);
@@ -88,7 +86,6 @@ gameSection.addEventListener("click", (e) => {
       }
     });
     hiddenNumber.splice(0, 4, ...newHiddenNumber);
-    console.log(hiddenNumber);
 
     toggleHiddenBntNewGame();
     variantsUl.innerHTML = "";
@@ -164,14 +161,15 @@ function sendUserVariant(inputValue) {
 
     attemptNumber.textContent -= 1;
     scrollToLastVariant();
-    if (attemptNumber.textContent == 0) {
-      loseGameOnlimitAttempts();
+
+    if (inputVariant.value === hiddenNumber.join("")) {
+      winGame();
       inputVariant.value = "";
       return;
     }
 
-    if (inputVariant.value === hiddenNumber.join("")) {
-      winGame();
+    if (attemptNumber.textContent == 0) {
+      loseGameOnlimitAttempts();
       inputVariant.value = "";
       return;
     }
@@ -182,7 +180,8 @@ function sendUserVariant(inputValue) {
 }
 
 function loseGameOnlimitAttempts() {
-  showHiddenModal();
+  showHial();
+  ddenMod;
   toggleHiddenBntNewGame();
   congratsMessage.classList.add("hidden");
   hiddenNumberMessage.textContent += " " + hiddenNumber.join("");
