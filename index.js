@@ -5,6 +5,7 @@ const gameLogContainer = document.querySelector(".game_log_container");
 const gameSection = document.querySelector("#game_section");
 const overlayModal = document.querySelector(".overlay_modal");
 const modalEndGame = document.querySelector(".modal_end_game");
+const body = document.querySelector("body");
 
 //startContainer
 const gameDifficultySelect = document.querySelector("#game_difficulty_select");
@@ -44,13 +45,19 @@ const hiddenNumber = [...new Array(4)].map(() => {
   }
 });
 
+//footer__container
+const iconForm = document.querySelector(".icon_form");
+const footerTriangleDown = document.querySelector(".triangle_down");
+const footerTriangleUp = document.querySelector(".triangle_up");
+const linksToSources = document.querySelector(".links_to_sources");
+
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !inputVariant.classList.contains("hidden")) {
     sendUserVariant(inputVariant.value);
   }
 });
 
-gameSection.addEventListener("click", (e) => {
+body.addEventListener("click", (e) => {
   if (e.target === startBtn) {
     startGame();
     inputVariant.focus();
@@ -97,6 +104,13 @@ gameSection.addEventListener("click", (e) => {
     lossMessage.classList.remove("hidden");
     startContainer.classList.toggle("hidden");
     gameLogContainer.classList.toggle("hidden");
+  }
+
+  if (e.target.parentElement === iconForm || e.target === iconForm) {
+    footerTriangleDown.classList.toggle("hidden");
+    footerTriangleUp.classList.toggle("hidden");
+    linksToSources.classList.toggle("hidden");
+    linksToSources.scrollIntoView({ behavior: "smooth" });
   }
 });
 

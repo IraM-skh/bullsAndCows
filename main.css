@@ -299,9 +299,6 @@ input {
   max-width: 120px;
 }
 
-.hidden {
-  display: none;
-}
 .variant_log {
   border-bottom: 7px solid #ffffff00;
 }
@@ -420,11 +417,38 @@ input {
   display: inline-block;
   border: 0.4em solid transparent;
   border-top: 0.4em solid #f3f0e6;
-  margin: 0 0.3em -0.3em 0.3em;
+  margin: 0 0.3em 0 0.3em;
+  position: relative;
+}
+.triangle_down {
+  top: 0.25em;
+}
+.triangle_up {
+  bottom: 0.1em;
+  transform: rotate(180deg);
 }
 .icon_form {
   padding: 1.5em 0;
+  cursor: pointer;
 }
 .icon_form p {
   display: inline-block;
+}
+
+footer ul li a {
+  color: #5bc9ef;
+  text-decoration: none;
+}
+
+footer ul li {
+  margin-bottom: 0.5em;
+}
+
+footer ul {
+  padding-bottom: 1em;
+  transition: all 2s;
+}
+
+.hidden {
+  display: none;
 }
